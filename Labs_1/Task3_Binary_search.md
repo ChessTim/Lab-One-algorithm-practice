@@ -40,7 +40,7 @@ def generate_array(n):
     return arr
 ```
 
-4. Реализация
+4. Эксперимент
 ```python
 from time import *
 from random import *
