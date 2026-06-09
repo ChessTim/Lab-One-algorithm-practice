@@ -5,43 +5,43 @@ class Node:
         self.right = None
 
 
-def pryamoy(root):
+def preorder(root):
     if root == None:
         return []
     res = []
     res.append(root.v)
-    for x in pryamoy(root.left):
+    for x in preorder(root.left):
         res.append(x)
-    for x in pryamoy(root.right):
+    for x in preorder(root.right):
         res.append(x)
     return res
 
 
-def simmetr(root):
+def inorder(root):
     if root == None:
         return []
     res = []
-    for x in simmetr(root.left):
+    for x in inorder(root.left):
         res.append(x)
     res.append(root.v)
-    for x in simmetr(root.right):
+    for x in inorder(root.right):
         res.append(x)
     return res
 
 
-def obratniy(root):
+def postorder(root):
     if root == None:
         return []
     res = []
-    for x in obratniy(root.left):
+    for x in postorder(root.left):
         res.append(x)
-    for x in obratniy(root.right):
+    for x in postorder(root.right):
         res.append(x)
     res.append(root.v)
     return res
 
 
-def v_shirinu(root):
+def level_order(root):
     if root == None:
         return []
     res = []
@@ -56,12 +56,12 @@ def v_shirinu(root):
     return res
 
 
-def poisk_min(root):
+def find_min(root):
     if root == None:
-        return 999999999 
+        return 999999999
     res = root.v
-    l_min = poisk_min(root.left)
-    r_min = poisk_min(root.right)
+    l_min = find_min(root.left)
+    r_min = find_min(root.right)
     if l_min < res:
         res = l_min
     if r_min < res:
@@ -69,12 +69,12 @@ def poisk_min(root):
     return res
 
 
-def poisk_max(root):
+def find_max(root):
     if root == None:
         return -999999999
     res = root.v
-    l_max = poisk_max(root.left)
-    r_max = poisk_max(root.right)
+    l_max = find_max(root.left)
+    r_max = find_max(root.right)
     if l_max > res:
         res = l_max
     if r_max > res:
@@ -89,9 +89,17 @@ if __name__ == "__main__":
     t1.left.left = Node(2)
     t1.left.right = Node(7)
     
-    print("Прямой:", pryamoy(t1))
-    print("Симметричный:", simmetr(t1))
-    print("Обратный:", obratniy(t1))
-    print("В ширину:", v_shirinu(t1))
-    print("Минимум:", poisk_min(t1))
-    print("Максимум:", poisk_max(t1))
+    print("Preorder:", preorder(t1))
+    print("Inorder:", inorder(t1))
+    print("Postorder:", postorder(t1))
+    print("Level_order:", level_order(t1))
+    print("Min:", find_min(t1))
+    print("Max:", find_max(t1))
+
+    t2 = Node(50)
+    t2.left = Node(30)
+    t2.right = Node(70)
+    
+    print("Level_order:", level_order(t2))
+    print("Min:", find_min(t2))
+    print("Max:", find_max(t2))
